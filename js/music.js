@@ -26,14 +26,19 @@ $('form').submit(function() {
 	var musicItem = new Music();
 
 	// For each input element, set a property of your new instance equal to the input's value
-	musicItem.set({
-		band: $('#band').val(),
-		website: $('#website').val(),
-		song: $('#song').val()
-	});
-	// After setting each property, save your new instance back to your database
-	musicItem.save();
-	
+	// musicItem.set({
+	// 	band: $('#band').val(),
+	// 	website: $('#website').val(),
+	// 	song: $('#song').val()
+	// });
+	// // After setting each property, save your new instance back to your database
+	// musicItem.save();
+
+	$(this).find('input').each(function() {
+		music.set($(this).attr('id'), $(this).val());
+		$(this).val('');
+	})
+
 	return false
 })
 
